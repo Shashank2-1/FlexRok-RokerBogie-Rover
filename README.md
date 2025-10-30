@@ -116,8 +116,6 @@ This integration of **mechanical**, **electrical**, and **computer vision** syst
 | **code/** | Python and Arduino source code for control and vision |
 | **CAD Model/** | CATIA V5 design files |
 | **Dataset_YOLO/** | YOLO-formatted annotated dataset |
-| **Paper/** | Published paper and citation details |
-| **Patent_info/** | Patent certificate (safe copy) |
 
 ---
 
