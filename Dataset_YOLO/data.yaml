@@ -1,0 +1,7 @@
+train: D:/Project/New folder/train/images
+val: D:/Project/New folder/valid/images
+test: D:/Project/New folder/test/images  # Optional
+
+nc: 1  # Number of classes
+names:
+  0: cylinder

@@ -1,0 +1,5 @@
+1️ don’t need to move the dataset (train/, valid/, test/).
+2️ Only move best.pt (trained model) and optionally data.yaml.
+3️ Transfer it to the Raspberry Pi via USB, SCP, or RealVNC.
+4️ Install YOLOv8 on Raspberry Pi and test detection.
+5️ Run YOLO on a live camera feed to see real-time detection!
