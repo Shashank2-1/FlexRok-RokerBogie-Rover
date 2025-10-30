@@ -1,0 +1,94 @@
+  #include <Servo.h>
+
+// Motor Driver Pins
+#define IN1 6
+#define IN2 7
+#define IN3 8
+#define IN4 9
+
+// Servo Pins
+#define FRONT_RIGHT_SERVO 10
+#define FRONT_LEFT_SERVO 11
+#define CAMERA_SERVO 12
+
+// Servo Objects
+Servo frontRightServo;
+Servo frontLeftServo;
+Servo cameraServo;
+
+void setup() {
+    Serial.begin(9600);  // Start Serial Communication
+
+    // Set motor driver pins as outputs
+    pinMode(IN1, OUTPUT);
+    pinMode(IN2, OUTPUT);
+    pinMode(IN3, OUTPUT);
+    pinMode(IN4, OUTPUT);
+
+    // Attach servos and set initial position to 80°
+    frontRightServo.attach(FRONT_RIGHT_SERVO);
+    frontLeftServo.attach(FRONT_LEFT_SERVO);
+    cameraServo.attach(CAMERA_SERVO);
+
+    frontRightServo.write(80);
+    frontLeftServo.write(80);
+    cameraServo.write(130);
+}
+
+void loop() {
+    if (Serial.available() > 0) {
+        String command = Serial.readStringUntil('\n');
+
+        if (command == "FORWARD") {
+            moveForward();
+        } 
+        else if (command == "RIGHT") {
+            turnRight();
+        } 
+        
+    }
+}
+
+void moveForward() {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
+    Serial.println("Moving Forward");
+}
+
+void turnRight() {
+  
+     digitalWrite(IN1, LOW);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, LOW);
+    frontRightServo.write (100);
+    frontLeftServo.write(120);
+    cameraServo.write(110);
+    delay (5000);
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
+    delay (45000);
+
+   frontRightServo.write (80);
+    frontLeftServo.write(80);
+    cameraServo.write(120);
+
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
+    delay(10000);
+    
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, LOW);
+ delay(10000000);
+    Serial.println("Turning Right");
+
+    
+}
